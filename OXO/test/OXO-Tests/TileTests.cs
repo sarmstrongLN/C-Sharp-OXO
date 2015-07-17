@@ -16,13 +16,13 @@ namespace OXO_Tests
         }
 
         [TestMethod]
-        public void TestDefaultValueIsASpace()
+        public void testDefaultValueIsASpace()
         {
             Assert.AreEqual(' ', testSubject.getValue());
         }
 
         [TestMethod]
-        public void TestValueIsAnOAfterSet()
+        public void testValueIsAnOAfterSet()
         {
             testSubject.setValue('O');
             Assert.AreEqual('O', testSubject.getValue());
