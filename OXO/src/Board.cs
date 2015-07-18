@@ -50,7 +50,7 @@ public class Board : IBoard
         return false;
     }
 
-    private bool isTileFree(int tileId)
+    public bool isTileFree(int tileId)
     {
         return m_aTiles[tileId].isFree();
     }

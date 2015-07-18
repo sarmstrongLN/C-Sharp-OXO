@@ -3,6 +3,7 @@
 public class Player : IPlayer
 {
     string m_sName;
+    char m_cSymbol;
 
 	public Player()
 	{
@@ -23,5 +24,15 @@ public class Player : IPlayer
     public void setName(string name)
     {
         m_sName = name;
+    }
+
+    public void setSymbol(char symbol)
+    {
+        m_cSymbol = symbol;
+    }
+
+    public char getSymbol()
+    {
+        return m_cSymbol;
     }
 }

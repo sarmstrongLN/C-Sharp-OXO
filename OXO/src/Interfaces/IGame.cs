@@ -3,7 +3,8 @@
 public interface IGame
 {
     void setUp();
-    void run();
+    bool run();
     bool shouldQuit();
-    void promptForQuit(string inject);
+    bool shouldPlayAgain(string injectedResponse);
+    void displayBoard();
 }

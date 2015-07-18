@@ -16,15 +16,13 @@ namespace OXO_Tests
         public void testShouldQuitReturnsTrueWhenYEnteredAtPrompt()
         {
             Game game = new Game();
-            game.promptForQuit("Y");
-            Assert.IsTrue(game.shouldQuit());
+            Assert.IsFalse(game.shouldPlayAgain("N") );
         }
         [TestMethod]
         public void testShouldQuitReturnsTrueWhenYesEnteredAtPrompt()
         {
             Game game = new Game();
-            game.promptForQuit("Yes");
-            Assert.IsTrue(game.shouldQuit());
+            Assert.IsFalse(game.shouldPlayAgain("No"));
         }
     }
 }
