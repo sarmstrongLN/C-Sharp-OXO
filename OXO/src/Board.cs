@@ -7,6 +7,7 @@ public class Board : IBoard
     bool m_fIsFinished;
     bool m_fHasWinner;
     char m_cWinner;
+    readonly int BOARD_SIZE = 9;
     List<int[]> m_aWinningLines;
 
     public Board()
@@ -17,8 +18,8 @@ public class Board : IBoard
 
     public void resetBoard()
     {
-        m_aTiles = new Tile[9];
-        for (int i = 0; i < 9; i++)
+        m_aTiles = new Tile[BOARD_SIZE];
+        for (int i = 0; i < BOARD_SIZE; i++)
         {
             m_aTiles[i] = new Tile();
         }
@@ -27,7 +28,7 @@ public class Board : IBoard
         m_cWinner = ' ';
     }
 
-    void setupWinningLines()
+    private void setupWinningLines()
     {
         m_aWinningLines = new List<int[]>();
         m_aWinningLines.Add(new int[3] { 0, 1, 2 });
@@ -136,11 +137,15 @@ public class Board : IBoard
 
     private void setWinner(char winner = ' ')
     {
-        m_fHasWinner = true;
-        m_fIsFinished = true;
+        setHasWinner();
+        setIsFinished();
         m_cWinner = winner;
     }
 
+    private void setHasWinner()
+    {
+        m_fHasWinner = true;
+    }
     private void setIsFinished()
     {
         m_fIsFinished = true;
