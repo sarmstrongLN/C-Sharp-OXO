@@ -25,7 +25,7 @@ public class Game : IGame
     }
 
     public bool run() {
-        
+        Console.Clear();
         setupPlayerNames();
 
         int numTiles = m_oBoard.getTiles().GetLength(0) - 1;

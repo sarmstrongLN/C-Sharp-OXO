@@ -10,11 +10,12 @@ namespace OXO
     {
         static void Main(string[] args)
         {
-            Game game = new Game();
-            while (!game.shouldQuit())
+            bool keepPlaying;
+            do
             {
-                game.run();
-            }
+                Game game = new Game();
+                keepPlaying = game.run();
+            } while (keepPlaying);
         }
     }
 }
