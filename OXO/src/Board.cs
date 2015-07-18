@@ -10,17 +10,14 @@ public class Board : IBoard
     readonly int BOARD_SIZE = 9;
     List<int[]> m_aWinningLines;
 
-    public Board()
-	{
+    public Board() {
         resetBoard();
         setupWinningLines();
 	}
 
-    public void resetBoard()
-    {
+    public void resetBoard() {
         m_aTiles = new Tile[BOARD_SIZE];
-        for (int i = 0; i < BOARD_SIZE; i++)
-        {
+        for (int i = 0; i < BOARD_SIZE; i++) {
             m_aTiles[i] = new Tile();
         }
         m_fIsFinished = false;
@@ -28,8 +25,7 @@ public class Board : IBoard
         m_cWinner = ' ';
     }
 
-    private void setupWinningLines()
-    {
+    private void setupWinningLines() {
         m_aWinningLines = new List<int[]>();
         m_aWinningLines.Add(new int[3] { 0, 1, 2 });
         m_aWinningLines.Add(new int[3] { 3, 4, 5 });
@@ -40,10 +36,9 @@ public class Board : IBoard
         m_aWinningLines.Add(new int[3] { 0, 4, 8 });
         m_aWinningLines.Add(new int[3] { 2, 4, 6 });
     }
-    public bool setTile(int tileId, char playerSymbol)
-    {
-        if (isTileFree(tileId) && !m_fIsFinished)
-        {
+
+    public bool setTile(int tileId, char playerSymbol) {
+        if (isTileFree(tileId) && !m_fIsFinished) {
             m_aTiles[tileId].setValue(playerSymbol);
             checkBoard();
             return true;
@@ -51,83 +46,65 @@ public class Board : IBoard
         return false;
     }
 
-    public bool isTileFree(int tileId)
-    {
+    public bool isTileFree(int tileId) {
         return m_aTiles[tileId].isFree();
     }
 
-    public bool isFinished(){
+    public bool isFinished() {
         return m_fIsFinished;
     }
 
-    public bool hasWinner()
-    {
+    public bool hasWinner() {
         return m_fHasWinner;
     }
 
-    public char getWinner()
-    {
+    public char getWinner() {
         return m_cWinner;
     }
 
-    public Tile[] getTiles()
-    {
+    public Tile[] getTiles() {
         return m_aTiles;
     }
 
-    private void checkBoard()
-    {
+    private void checkBoard() {
         checkForWinner();
-        if (!m_fIsFinished)
-        {
+        if (!m_fIsFinished) {
             checkIfBoardFull();
         }
-        
     }
 
-    private void checkIfBoardFull()
-    {
+    private void checkIfBoardFull() {
         bool full = true;
-        foreach (Tile tile in m_aTiles)
-        {
-            if (tile.getValue() == Tile.DEFAULT_VALUE)
-            {
+        foreach (Tile tile in m_aTiles) {
+            if (tile.getValue() == Tile.DEFAULT_VALUE) {
                 full = false;
                 return;
             }
         }
 
-        if (full)
-        {
+        if (full) {
             setIsFinished();
         }
-        
     }
-    private void checkForWinner()
-    {
+    private void checkForWinner() {
         int lineIndex = 0;
-        while (lineIndex < m_aWinningLines.Count)
-        {
+        while (lineIndex < m_aWinningLines.Count) {
             int[] aLine = m_aWinningLines[lineIndex];
-       
             char first = m_aTiles[aLine[0]].getValue();
-            if (first == Tile.DEFAULT_VALUE)
-            {
+
+            if (first == Tile.DEFAULT_VALUE) {
                 lineIndex++;
                 continue;
             }
 
             bool lineWins = true;
-            for (int i = 0; i < aLine.Length; i++)
-            {
-                if (m_aTiles[aLine[i]].getValue() != first)
-                {
+            for (int i = 0; i < aLine.Length; i++) {
+                if (m_aTiles[aLine[i]].getValue() != first) {
                     lineWins = false;
                     break;
                 }
             }
-            if (lineWins)
-            {
+            if (lineWins) {
                 setWinner(first);
                 return;
             }
@@ -135,19 +112,16 @@ public class Board : IBoard
         }
     }
 
-    private void setWinner(char winner = ' ')
-    {
+    private void setWinner(char winner = ' ') {
         setHasWinner();
         setIsFinished();
         m_cWinner = winner;
     }
 
-    private void setHasWinner()
-    {
+    private void setHasWinner() {
         m_fHasWinner = true;
     }
-    private void setIsFinished()
-    {
+    private void setIsFinished() {
         m_fIsFinished = true;
     }
 }

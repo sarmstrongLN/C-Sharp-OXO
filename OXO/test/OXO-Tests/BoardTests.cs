@@ -8,13 +8,11 @@ namespace OXO_Tests
     {
         Board testSubject;
 
-        public BoardTests()
-        {
+        public BoardTests() {
             testSubject = new Board();
         }
 
-        public void setBoardFinishedNoWinner()
-        {
+        public void setBoardFinishedNoWinner() {
             testSubject.resetBoard();
             testSubject.setTile(0, 'O');
             testSubject.setTile(1, 'O');
@@ -28,19 +26,15 @@ namespace OXO_Tests
         }
 
         [TestMethod]
-        public void testBoardFullBoardSetsFinishedFlag()
-        {
+        public void testBoardFullBoardSetsFinishedFlag() {
             setBoardFinishedNoWinner();
-
             Assert.IsTrue(testSubject.isFinished());
             Assert.IsFalse(testSubject.hasWinner());
         }
         
         [TestMethod]
-        public void testBoardHorizontalLines()
-        {
-            for (int i = 0; i < 3; i++)
-            {
+        public void testBoardHorizontalLines() {
+            for (int i = 0; i < 3; i++) {
                 int tileOffset = i * 3;
                 testSubject.resetBoard();
                 testSubject.setTile(tileOffset, 'X');
@@ -52,10 +46,8 @@ namespace OXO_Tests
         }
 
         [TestMethod]
-        public void testBoardVerticalLines()
-        {
-            for (int i = 0; i < 3; i++)
-            {
+        public void testBoardVerticalLines() {
+            for (int i = 0; i < 3; i++) {
                 testSubject.resetBoard();
                 testSubject.setTile(i, 'X');
                 testSubject.setTile(i + 3, 'X');
@@ -66,8 +58,7 @@ namespace OXO_Tests
         }
 
         [TestMethod]
-        public void testBoardDiagonalLines()
-        {
+        public void testBoardDiagonalLines() {
             testSubject.resetBoard();
             testSubject.setTile(0, 'X');
             testSubject.setTile(4, 'X');
@@ -85,25 +76,21 @@ namespace OXO_Tests
         }
 
         [TestMethod]
-        public void testBoardWillNotSetAlreadySetTile()
-        {
+        public void testBoardWillNotSetAlreadySetTile() {
             testSubject.resetBoard();
             testSubject.setTile(0, 'X');
             Assert.IsFalse(testSubject.setTile(0, 'O'));
         }
 
         [TestMethod]
-        public void testBoardResetClearsAllTiles()
-        {
+        public void testBoardResetClearsAllTiles() {
             testSubject.resetBoard();
             setBoardFinishedNoWinner();
-            for (int i = 0; i < testSubject.getTiles().GetLength(0); i++)
-            {
+            for (int i = 0; i < testSubject.getTiles().GetLength(0); i++) {
                 Assert.IsFalse(testSubject.isTileFree(i));
             }
             testSubject.resetBoard();
-            for (int i = 0; i < testSubject.getTiles().GetLength(0); i++)
-            {
+            for (int i = 0; i < testSubject.getTiles().GetLength(0); i++) {
                 Assert.IsTrue(testSubject.isTileFree(i));
             }
         }

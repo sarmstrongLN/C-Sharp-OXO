@@ -8,29 +8,25 @@ namespace OXO_Tests
     {
         Player testSubject;
 
-        public PlayerTests()
-        {
+        public PlayerTests() {
             testSubject = new Player();
         }
 
         [TestMethod]
-        public void testPlayerNameDefaultsToPlayer()
-        {
+        public void testPlayerNameDefaultsToPlayer() {
             testSubject = new Player();
             Assert.AreEqual("Player", testSubject.getName());
         }
 
         [TestMethod]
-        public void testPlayerNameStoredWhenSet()
-        {
+        public void testPlayerNameStoredWhenSet() {
             testSubject = new Player();
             testSubject.setName("Tony Stark");
             Assert.AreEqual("Tony Stark", testSubject.getName());
         }
 
         [TestMethod]
-        public void testMoveWithinBoardRange()
-        {
+        public void testMoveWithinBoardRange() {
             //Arbitrary value as this will be provided by the Game
             int maxTileId = 12;
             

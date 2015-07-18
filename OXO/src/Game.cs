@@ -24,13 +24,11 @@ public class Game : IGame
 
         int numTiles = m_oBoard.getTiles().GetLength(0) - 1;
         displayBoard();
-        while (true)
-        {
+        while (true) {
             
             Thread.Sleep(1000);
 
-            if (m_fPlayer1Turn)
-            {
+            if (m_fPlayer1Turn) {
                 performMove(m_oPlayer1);
             } else {
                 performMove(m_oPlayer2);
@@ -43,10 +41,8 @@ public class Game : IGame
                     displayDrawMessage();
                 }
 
-                return shouldPlayAgain();
-                
+                return shouldPlayAgain();           
             }
-                
         }
     }
 
@@ -63,8 +59,7 @@ public class Game : IGame
     public bool shouldPlayAgain(string injected = "") {
 
         string input;
-        if (String.IsNullOrEmpty(injected))
-        {
+        if (String.IsNullOrEmpty(injected)) {
             Console.Write("Play again? Y(es)/N(o): ");
             input = Console.ReadLine();
         } else {
@@ -78,13 +73,11 @@ public class Game : IGame
         return false;
     }
 
-    private void setShouldQuit(bool value)
-    {
+    private void setShouldQuit(bool value) {
         m_fShouldQuit = value;
     }
 
-    public void displayBoard()
-    {
+    public void displayBoard() {
         Tile[] boardTiles = m_oBoard.getTiles();
         Console.Clear();
         Console.Write("\n\n\n");
@@ -100,20 +93,17 @@ public class Game : IGame
             ));
     }
 
-    private void performMove(IPlayer player)
-    {
+    private void performMove(IPlayer player) {
         int maxTileId = m_oBoard.getTiles().GetLength(0);
         int move = player.pickTile(maxTileId);
-        while (!m_oBoard.isTileFree(move))
-        {
+        while (!m_oBoard.isTileFree(move)) {
             move = player.pickTile(maxTileId);
         }
         m_oBoard.setTile(move, player.getSymbol());
         m_fPlayer1Turn = !m_fPlayer1Turn;
     }
 
-    private void displayWinner()
-    {
+    private void displayWinner() {
          char winningSymbol = m_oBoard.getWinner();
          string winnerName;
          if( m_oPlayer1.getSymbol() == winningSymbol){
@@ -124,24 +114,20 @@ public class Game : IGame
           Console.WriteLine(String.Format("{0} won!", winnerName) );
     }
 
-    private void displayDrawMessage()
-    {
+    private void displayDrawMessage() {
         Console.WriteLine("Game over! Draw game");
     }
 
-    private void setupPlayerNames()
-    {
+    private void setupPlayerNames() {
         string p1Name = "";
         string p2Name = "";
-        while (p1Name == "")
-        {
+        while (p1Name == "") {
             Console.Clear();
             Console.WriteLine("Please enter Player 1's name: ");
             p1Name = Console.ReadLine();
         }
 
-        while (p2Name == "")
-        {
+        while (p2Name == "") {
             Console.Clear();
             Console.WriteLine("Please enter Player 2's name: ");
             p2Name = Console.ReadLine();

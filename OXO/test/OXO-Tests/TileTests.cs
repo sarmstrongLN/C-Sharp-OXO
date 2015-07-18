@@ -10,20 +10,17 @@ namespace OXO_Tests
     {
         Tile testSubject;
 
-        public TileTests()
-        {
+        public TileTests() {
             testSubject = new Tile();    
         }
 
         [TestMethod]
-        public void testDefaultValueIsASpace()
-        {
+        public void testDefaultValueIsASpace() {
             Assert.AreEqual(' ', testSubject.getValue());
         }
 
         [TestMethod]
-        public void testValueIsAnOAfterSet()
-        {
+        public void testValueIsAnOAfterSet() {
             testSubject.setValue('O');
             Assert.AreEqual('O', testSubject.getValue());
         }

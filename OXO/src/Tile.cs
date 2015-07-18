@@ -5,13 +5,11 @@ public class Tile : ITile
     public const char DEFAULT_VALUE = ' ';
     char m_cDisplayValue;
 
-	public Tile()
-	{
+	public Tile() {
         m_cDisplayValue = DEFAULT_VALUE;
 	}
 
-    public bool isFree()
-    {
+    public bool isFree() {
         return getValue() == DEFAULT_VALUE;
     }
 
