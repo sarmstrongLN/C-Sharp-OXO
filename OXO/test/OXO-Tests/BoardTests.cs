@@ -28,7 +28,7 @@ namespace OXO_Tests
         }
 
         [TestMethod]
-        public void testFullBoardSetsFinishedFlag()
+        public void testBoardFullBoardSetsFinishedFlag()
         {
             setBoardFinishedNoWinner();
 
@@ -37,7 +37,7 @@ namespace OXO_Tests
         }
         
         [TestMethod]
-        public void testHorizontalLines()
+        public void testBoardHorizontalLines()
         {
             for (int i = 0; i < 3; i++)
             {
@@ -52,7 +52,7 @@ namespace OXO_Tests
         }
 
         [TestMethod]
-        public void testVerticalLines()
+        public void testBoardVerticalLines()
         {
             for (int i = 0; i < 3; i++)
             {
@@ -66,7 +66,7 @@ namespace OXO_Tests
         }
 
         [TestMethod]
-        public void testDiagonalLines()
+        public void testBoardDiagonalLines()
         {
             testSubject.resetBoard();
             testSubject.setTile(0, 'X');
@@ -82,6 +82,30 @@ namespace OXO_Tests
             Assert.IsTrue(testSubject.isFinished());
             Assert.IsTrue(testSubject.hasWinner());
 
+        }
+
+        [TestMethod]
+        public void testBoardWillNotSetAlreadySetTile()
+        {
+            testSubject.resetBoard();
+            testSubject.setTile(0, 'X');
+            Assert.IsFalse(testSubject.setTile(0, 'O'));
+        }
+
+        [TestMethod]
+        public void testBoardResetClearsAllTiles()
+        {
+            testSubject.resetBoard();
+            setBoardFinishedNoWinner();
+            for (int i = 0; i < testSubject.getTiles().GetLength(0); i++)
+            {
+                Assert.IsFalse(testSubject.isTileFree(i));
+            }
+            testSubject.resetBoard();
+            for (int i = 0; i < testSubject.getTiles().GetLength(0); i++)
+            {
+                Assert.IsTrue(testSubject.isTileFree(i));
+            }
         }
     }
 }

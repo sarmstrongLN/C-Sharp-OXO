@@ -41,7 +41,7 @@ public class Board : IBoard
     }
     public bool setTile(int tileId, char playerSymbol)
     {
-        if (m_aTiles[tileId].isFree() && !m_fIsFinished)
+        if (isTileFree(tileId) && !m_fIsFinished)
         {
             m_aTiles[tileId].setValue(playerSymbol);
             checkBoard();

@@ -7,19 +7,13 @@ namespace OXO_Tests
     public class GameTests
     {
         [TestMethod]
-        public void testShouldQuitReturnsFalseIfUserNotPrompted()
-        {
-            Game game = new Game();
-            Assert.IsFalse(game.shouldQuit());
-        }
-        [TestMethod]
-        public void testShouldQuitReturnsTrueWhenYEnteredAtPrompt()
+        public void testGameShouldQuitReturnsTrueWhenYEnteredAtPrompt()
         {
             Game game = new Game();
             Assert.IsFalse(game.shouldPlayAgain("N") );
         }
         [TestMethod]
-        public void testShouldQuitReturnsTrueWhenYesEnteredAtPrompt()
+        public void testGameShouldQuitReturnsTrueWhenYesEnteredAtPrompt()
         {
             Game game = new Game();
             Assert.IsFalse(game.shouldPlayAgain("No"));

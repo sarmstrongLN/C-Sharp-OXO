@@ -129,10 +129,21 @@ public class Game : IGame
 
     private void setupPlayerNames()
     {
-        Console.WriteLine("Please enter Player 1's name: ");
-        string p1Name = Console.ReadLine();
-        Console.WriteLine("Please enter Player 2's name: ");
-        string p2Name = Console.ReadLine();
+        string p1Name = "";
+        string p2Name = "";
+        while (p1Name == "")
+        {
+            Console.Clear();
+            Console.WriteLine("Please enter Player 1's name: ");
+            p1Name = Console.ReadLine();
+        }
+
+        while (p2Name == "")
+        {
+            Console.Clear();
+            Console.WriteLine("Please enter Player 2's name: ");
+            p2Name = Console.ReadLine();
+        }
         m_oPlayer1.setName(p1Name);
         m_oPlayer2.setName(p2Name);
     }
