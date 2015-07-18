@@ -9,15 +9,9 @@ public class Game : IGame
     private bool m_fPlayer1Turn;
     private bool m_fShouldQuit;
     const string baseBoard = " {0} | {1} | {2} \n-----------\n {3} | {4} | {5} \n-----------\n {6} | {7} | {8}\n\n";
-	public Game()
-	{
-        m_oBoard = new Board();
-        m_oPlayer1 = new Player();
-        m_oPlayer1.setSymbol('O');
-        m_oPlayer2 = new Player();
-        m_oPlayer2.setSymbol('X');
-        m_fPlayer1Turn = true;
-        m_fShouldQuit = false;
+	
+    public Game(){
+        setUp();
 	}
 
     public bool shouldQuit() {
@@ -56,7 +50,15 @@ public class Game : IGame
         }
     }
 
-    public void setUp() { }
+    public void setUp() {
+        m_oBoard = new Board();
+        m_oPlayer1 = new Player();
+        m_oPlayer1.setSymbol('O');
+        m_oPlayer2 = new Player();
+        m_oPlayer2.setSymbol('X');
+        m_fPlayer1Turn = true;
+        m_fShouldQuit = false;
+    }
 
     public bool shouldPlayAgain(string injected = "") {
 
@@ -76,7 +78,7 @@ public class Game : IGame
         return false;
     }
 
-    public void setShouldQuit(bool value)
+    private void setShouldQuit(bool value)
     {
         m_fShouldQuit = value;
     }
