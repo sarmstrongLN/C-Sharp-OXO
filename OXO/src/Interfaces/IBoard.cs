@@ -2,10 +2,11 @@
 
 interface IBoard
 {
-    bool hasFinished();
+    bool isFinished();
+    void resetBoard();
+    bool setTile(int tileId, char symbol);
     bool hasWinner();
     char getWinner();
-    bool isTileFree(int tileId);
-    void makeMove(int tileId, char playerChar);
+    Tile[] getTiles(); 
 
 }
